@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.linear_model import LinearRegression
 
 df = pd.DataFrame(
     {
@@ -12,3 +13,9 @@ plt.xlabel('Price(US$)')
 plt.ylabel('Price(US$)')
 plt.scatter(df.Area, df.Price, color='green', marker='+')
 plt.show()
+
+reg = LinearRegression()
+reg.fit(df[['Area']], df.Price)
+print(reg.predict([[3300]]))
+print(reg.coef_)
+print(reg.intercept_)
